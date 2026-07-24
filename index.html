@@ -273,6 +273,23 @@ section{position:relative}
 .qa[open] summary::after{transform:rotate(45deg)}
 .qa .a{padding:0 4px 24px;color:var(--paper-dim);font-size:15px;font-weight:300;line-height:1.75}
 
+/* ── 제휴 문의 폼 ── */
+.contact-form{max-width:620px;margin:0 auto}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:18px 18px}
+.cf-field{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
+.cf-field label{font-size:13px;color:var(--paper-dim);font-family:var(--sans-ko);letter-spacing:.02em}
+.cf-field input,.cf-field textarea{
+  background:rgba(236,228,212,.05);border:1px solid var(--line);border-radius:12px;
+  padding:13px 16px;color:var(--paper);font-family:var(--sans-ko);font-size:14.5px;font-weight:300;
+  resize:vertical;transition:border-color .3s,background .3s}
+.cf-field input:focus,.cf-field textarea:focus{outline:none;border-color:var(--brass);background:rgba(236,228,212,.08)}
+.contact-form .btn{width:100%;padding:15px;margin-top:4px}
+.contact-form .btn:disabled{opacity:.6;cursor:default;transform:none}
+.cf-status{margin-top:16px;text-align:center;font-size:13.5px;color:var(--paper-dim);min-height:1.2em}
+.cf-status.ok{color:var(--celadon)}
+.cf-status.err{color:#d98a7a}
+@media(max-width:660px){.cf-row{grid-template-columns:1fr}}
+
 /* ── CTA 밴드 ── */
 .cta-band{text-align:center;padding:96px 26px;position:relative;overflow:hidden}
 .cta-band h2{font-family:var(--serif-ko);font-weight:300;font-size:clamp(28px,4.4vw,46px);line-height:1.3;max-width:15em;margin:0 auto}
@@ -570,6 +587,40 @@ footer{border-top:1px solid var(--line-soft);padding:60px 26px 44px;margin-top:2
   </div>
 </section>
 
+<!-- ══ 제휴 문의 ══ -->
+<section id="contact" class="section-pad">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow" data-i18n="contact.eyebrow">Contact · 제휴 문의</div>
+      <h2 data-i18n="contact.h2">함께 <em>고요를 만들어요</em></h2>
+      <p data-i18n="contact.p">제휴, 콘텐츠 공급, 언론 문의는 아래 양식으로 보내주세요. 빠르게 답변드리겠습니다.</p>
+    </div>
+    <form id="contactForm" class="contact-form" action="https://formspree.io/f/xaqrlyok" method="POST">
+      <div class="cf-row">
+        <div class="cf-field">
+          <label for="cfName" data-i18n="contact.name">이름</label>
+          <input type="text" id="cfName" name="name" autocomplete="name" required>
+        </div>
+        <div class="cf-field">
+          <label for="cfEmail" data-i18n="contact.email">이메일</label>
+          <input type="email" id="cfEmail" name="email" autocomplete="email" required>
+        </div>
+      </div>
+      <div class="cf-field">
+        <label for="cfCompany" data-i18n="contact.company">회사 / 브랜드명 (선택)</label>
+        <input type="text" id="cfCompany" name="company" autocomplete="organization">
+      </div>
+      <div class="cf-field">
+        <label for="cfMessage" data-i18n="contact.message">문의 내용</label>
+        <textarea id="cfMessage" name="message" rows="5" required></textarea>
+      </div>
+      <input type="hidden" name="_subject" value="Goyo 제휴 문의">
+      <button type="submit" class="btn btn-primary" id="cfSubmit" data-i18n="contact.submit">문의 보내기</button>
+      <div class="cf-status" id="cfStatus" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+</section>
+
 <!-- ══ CTA 밴드 ══ -->
 <section class="cta-band">
   <div class="aurora" style="opacity:.5"><span class="b3" style="left:30vw"></span></div>
@@ -591,7 +642,7 @@ footer{border-top:1px solid var(--line-soft);padding:60px 26px 44px;margin-top:2
       <p class="about" data-i18n="foot.about">대금의 숨결과 가야금의 여운으로, 멀리 떠나온 마음이 잠시 돌아가 쉬는 곳. 아시아의 소리로 잠들고 명상합니다.</p>
     </div>
     <div><h5 data-i18n="foot.h5.explore">둘러보기</h5><ul><li><a href="#sounds" data-i18n="foot.explore1">소리 듣기</a></li><li><a href="#collections" data-i18n="nav.collections">컬렉션</a></li><li><a href="#pricing" data-i18n="nav.pricing">멤버십</a></li><li><a href="#pillars" data-i18n="foot.explore4">고요의 이유</a></li></ul></div>
-    <div><h5 data-i18n="foot.h5.company">회사</h5><ul><li><a href="#" data-i18n="foot.company1">소개</a></li><li><a href="#" data-i18n="foot.company2">크리에이터 모집</a></li><li><a href="#" data-i18n="foot.company3">블로그</a></li><li><a href="#" data-i18n="foot.company4">문의하기</a></li></ul></div>
+    <div><h5 data-i18n="foot.h5.company">회사</h5><ul><li><a href="#" data-i18n="foot.company1">소개</a></li><li><a href="#" data-i18n="foot.company2">크리에이터 모집</a></li><li><a href="#" data-i18n="foot.company3">블로그</a></li><li><a href="#contact" data-i18n="foot.company4">문의하기</a></li></ul></div>
     <div><h5 data-i18n="foot.h5.policy">정책</h5><ul><li><a href="#" data-i18n="foot.policy1">이용약관</a></li><li><a href="#" data-i18n="foot.policy2">개인정보처리방침</a></li><li><a href="#" data-i18n="foot.policy3">환불 정책</a></li></ul></div>
   </div>
   <div class="foot-bottom">
@@ -688,7 +739,12 @@ const TRANSLATIONS={
     'foot.h5.company':'公司','foot.company1':'关于我们','foot.company2':'招募创作者','foot.company3':'博客','foot.company4':'联系我们',
     'foot.h5.policy':'政策','foot.policy1':'使用条款','foot.policy2':'隐私政策','foot.policy3':'退款政策',
     'modal.title.default':'静会员','modal.desc.default':'以下方案将开启完整音效库。',
-    'modal.go':'前往付款','modal.close':'下次再说'
+    'modal.go':'前往付款','modal.close':'下次再说',
+    'contact.eyebrow':'Contact · 合作咨询',
+    'contact.h2':'让我们一起<em>共创静谧</em>',
+    'contact.p':'合作、内容供应、媒体垂询请通过下方表单联系我们,我们会尽快回复。',
+    'contact.name':'姓名','contact.email':'电子邮箱','contact.company':'公司 / 品牌名称(选填)',
+    'contact.message':'咨询内容','contact.submit':'发送咨询'
   },
   hi:{
     'meta.title':'गोयो · Goyo — एशिया की ध्वनियों में शांति से सोएं',
@@ -757,7 +813,12 @@ const TRANSLATIONS={
     'foot.h5.company':'कंपनी','foot.company1':'परिचय','foot.company2':'क्रिएटर भर्ती','foot.company3':'ब्लॉग','foot.company4':'संपर्क करें',
     'foot.h5.policy':'नीतियां','foot.policy1':'उपयोग की शर्तें','foot.policy2':'गोपनीयता नीति','foot.policy3':'रिफंड नीति',
     'modal.title.default':'गोयो सदस्यता','modal.desc.default':'नीचे दी गई योजना से पूरी लाइब्रेरी खुलती है।',
-    'modal.go':'भुगतान करें','modal.close':'बाद में करेंगे'
+    'modal.go':'भुगतान करें','modal.close':'बाद में करेंगे',
+    'contact.eyebrow':'Contact · साझेदारी पूछताछ',
+    'contact.h2':'आइए मिलकर <em>शांति की रचना करें</em>',
+    'contact.p':'साझेदारी, कंटेंट सप्लाई या मीडिया संबंधी पूछताछ नीचे दिए गए फ़ॉर्म से भेजें। हम जल्द ही जवाब देंगे।',
+    'contact.name':'नाम','contact.email':'ईमेल','contact.company':'कंपनी / ब्रांड नाम (वैकल्पिक)',
+    'contact.message':'संदेश','contact.submit':'पूछताछ भेजें'
   }
 };
 const MSG={
@@ -765,17 +826,26 @@ const MSG={
        'modal.setupnote':'데모 모드입니다 · Stripe 결제 링크를 연결하면 실제 결제로 전환됩니다.',
        'modal.ready.title':'결제 준비 완료 ✓',
        'modal.ready.desc':'이 버튼은 <b style="color:var(--brass-bright)">Stripe 결제창</b>으로 연결됩니다.<br>운영자가 결제 링크를 넣으면 바로 실제 결제가 진행됩니다.',
-       'modal.closebtn2':'닫기' },
+       'modal.closebtn2':'닫기',
+       'contact.sending':'보내는 중…',
+       'contact.success':'문의가 접수되었습니다. 빠르게 답변드리겠습니다. 감사합니다.',
+       'contact.error':'전송에 실패했습니다. 잠시 후 다시 시도해 주세요.' },
   zh:{ 'modal.desc.select':'通过您选择的方案,将开启完整音效库与冥想课程。',
        'modal.setupnote':'当前为演示模式 · 连接Stripe支付链接后将切换为真实支付。',
        'modal.ready.title':'支付准备完成 ✓',
        'modal.ready.desc':'此按钮将连接到<b style="color:var(--brass-bright)">Stripe支付页面</b>。<br>运营者添加支付链接后,即可立即进行真实支付。',
-       'modal.closebtn2':'关闭' },
+       'modal.closebtn2':'关闭',
+       'contact.sending':'发送中…',
+       'contact.success':'咨询已收到,我们会尽快回复,谢谢。',
+       'contact.error':'发送失败,请稍后重试。' },
   hi:{ 'modal.desc.select':'आपकी चुनी गई योजना से पूरी ध्वनि लाइब्रेरी और ध्यान कोर्स खुल जाएंगे।',
        'modal.setupnote':'यह डेमो मोड है · Stripe भुगतान लिंक जोड़ने पर यह वास्तविक भुगतान में बदल जाएगा।',
        'modal.ready.title':'भुगतान तैयार है ✓',
        'modal.ready.desc':'यह बटन <b style="color:var(--brass-bright)">Stripe भुगतान पृष्ठ</b> से जुड़ा है।<br>ऑपरेटर द्वारा भुगतान लिंक जोड़ते ही वास्तविक भुगतान तुरंत शुरू हो जाएगा।',
-       'modal.closebtn2':'बंद करें' }
+       'modal.closebtn2':'बंद करें',
+       'contact.sending':'भेजा जा रहा है…',
+       'contact.success':'आपकी पूछताछ प्राप्त हो गई है। हम जल्द ही जवाब देंगे। धन्यवाद।',
+       'contact.error':'भेजने में विफल रहा। कृपया थोड़ी देर बाद फिर कोशिश करें।' }
 };
 function t(key){ return (MSG[currentLang]&&MSG[currentLang][key]) || MSG.ko[key] || key; }
 
@@ -1053,6 +1123,24 @@ function closeModal(){document.getElementById('modal').classList.remove('show');
   setTimeout(()=>{const a=document.querySelector('.modal .m-actions');
     if(a) a.innerHTML=`<button class="btn btn-primary" onclick="proceedCheckout()">${(TRANSLATIONS[currentLang]&&TRANSLATIONS[currentLang]['modal.go'])||KO_CACHE['modal.go']}</button><button class="close" onclick="closeModal()">${(TRANSLATIONS[currentLang]&&TRANSLATIONS[currentLang]['modal.close'])||KO_CACHE['modal.close']}</button>`;},300);}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
+/* ══════════════ 제휴 문의 폼 (Formspree) ══════════════ */
+const contactForm=document.getElementById('contactForm');
+if(contactForm){
+  contactForm.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const btn=document.getElementById('cfSubmit'), status=document.getElementById('cfStatus');
+    const originalLabel=btn.textContent;
+    btn.disabled=true; btn.textContent=t('contact.sending');
+    status.className='cf-status'; status.textContent='';
+    try{
+      const res=await fetch(contactForm.action,{method:'POST',body:new FormData(contactForm),headers:{'Accept':'application/json'}});
+      if(res.ok){ status.textContent=t('contact.success'); status.classList.add('ok'); contactForm.reset(); }
+      else{ status.textContent=t('contact.error'); status.classList.add('err'); }
+    }catch(err){ status.textContent=t('contact.error'); status.classList.add('err'); }
+    finally{ btn.disabled=false; btn.textContent=originalLabel; }
+  });
+}
 
 applyLang(currentLang);
 </script>
