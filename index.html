@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>고요 · Goyo — 아시아의 소리로 잠들다</title>
-<meta name="description" content="대금·가야금·범종·산사의 비. 아시아 전통악기와 자연의 소리로 만든 명상·수면 사운드. 무료로 지금 들어보세요." />
-<meta property="og:title" content="고요 · Goyo — 아시아의 소리로 잠들다" />
-<meta property="og:description" content="아시아 전통악기와 자연의 소리로 만든 명상·수면 사운드." />
+<title data-i18n="meta.title">고요 · Goyo — 아시아의 소리로 잠들다</title>
+<meta name="description" data-i18n-content="meta.desc" content="대금·가야금·범종·산사의 비. 아시아 전통악기와 자연의 소리로 만든 명상·수면 사운드. 무료로 지금 들어보세요." />
+<meta property="og:title" data-i18n-content="meta.title" content="고요 · Goyo — 아시아의 소리로 잠들다" />
+<meta property="og:description" data-i18n-content="meta.ogdesc" content="아시아 전통악기와 자연의 소리로 만든 명상·수면 사운드." />
 <meta property="og:type" content="website" />
 
 <!-- ═══════════════════════════════════════════════════════════════
@@ -103,6 +103,10 @@ nav{max-width:var(--maxw);margin:0 auto;padding:16px 26px;display:flex;align-ite
 .nav-links{display:flex;gap:26px;margin-left:14px;font-size:14px;color:var(--paper-dim);font-weight:400}
 .nav-links a{transition:color .3s}.nav-links a:hover{color:var(--brass-bright)}
 .nav-right{margin-left:auto;display:flex;align-items:center;gap:20px}
+.lang-switch{background:rgba(236,228,212,.06);color:var(--paper-dim);border:1px solid var(--line);
+  border-radius:100px;padding:8px 12px;font-family:var(--sans);font-size:13px;cursor:pointer;transition:border-color .3s,color .3s}
+.lang-switch:hover{border-color:var(--brass);color:var(--paper)}
+.lang-switch option{background:var(--ink-3);color:var(--paper)}
 .nav-right .login{font-size:14px;color:var(--paper-dim);transition:color .3s}
 .nav-right .login:hover{color:var(--paper)}
 .btn{font-family:var(--sans-ko);font-weight:500;font-size:14px;border:none;cursor:pointer;
@@ -338,20 +342,25 @@ footer{border-top:1px solid var(--line-soft);padding:60px 26px 44px;margin-top:2
 <!-- ══ NAV ══ -->
 <header>
   <nav>
-    <a class="brand" href="#top" aria-label="고요 홈">
+    <a class="brand" href="#top" data-i18n-aria="nav.brand.aria" aria-label="고요 홈">
       <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="#C9A96A" stroke-width="1.2" opacity=".5"/><path d="M16 7c-4 0-6.5 3-6.5 7.5V19c0 .8-.5 1.5-1.2 2h15.4c-.7-.5-1.2-1.2-1.2-2v-4.5C22.5 10 20 7 16 7Z" stroke="#C9A96A" stroke-width="1.3" stroke-linejoin="round"/><path d="M16 4.5V7M13.5 22.5c0 1.4 1.1 2.5 2.5 2.5s2.5-1.1 2.5-2.5" stroke="#E7CE96" stroke-width="1.3" stroke-linecap="round"/></svg>
       Goyo<span class="ko">고요</span>
     </a>
     <div class="nav-links">
-      <a href="#sounds">소리</a>
-      <a href="#collections">컬렉션</a>
-      <a href="#pillars">이유</a>
-      <a href="#pricing">멤버십</a>
+      <a href="#sounds" data-i18n="nav.sounds">소리</a>
+      <a href="#collections" data-i18n="nav.collections">컬렉션</a>
+      <a href="#pillars" data-i18n="nav.pillars">이유</a>
+      <a href="#pricing" data-i18n="nav.pricing">멤버십</a>
     </div>
     <div class="nav-right">
-      <a class="login" href="#pricing">로그인</a>
-      <button class="btn btn-primary" onclick="scrollToId('pricing')">무료로 시작</button>
-      <button class="hamburger" onclick="document.querySelector('.nav-links').style.display='flex'" aria-label="메뉴">
+      <select class="lang-switch" id="langSwitch" aria-label="Language / 언어 / 语言 / भाषा" onchange="applyLang(this.value)">
+        <option value="ko">한국어</option>
+        <option value="zh">中文</option>
+        <option value="hi">हिन्दी</option>
+      </select>
+      <a class="login" href="#pricing" data-i18n="nav.login">로그인</a>
+      <button class="btn btn-primary" data-i18n="nav.cta" onclick="scrollToId('pricing')">무료로 시작</button>
+      <button class="hamburger" onclick="document.querySelector('.nav-links').style.display='flex'" data-i18n-aria="nav.menu.aria" aria-label="메뉴">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
     </div>
@@ -362,9 +371,9 @@ footer{border-top:1px solid var(--line-soft);padding:60px 26px 44px;margin-top:2
 
 <!-- ══ HERO ══ -->
 <section class="hero">
-  <div class="eyebrow">아시아의 소리 · 명상과 수면</div>
+  <div class="eyebrow" data-i18n="hero.eyebrow">아시아의 소리 · 명상과 수면</div>
 
-  <div class="bell-wrap" id="bellWrap" role="button" tabindex="0" aria-label="범종 소리 듣기">
+  <div class="bell-wrap" id="bellWrap" role="button" tabindex="0" data-i18n-aria="hero.bell.aria" aria-label="범종 소리 듣기">
     <div class="bell-glow"></div>
     <div class="bell-core">
       <svg viewBox="0 0 120 120" fill="none">
@@ -375,36 +384,36 @@ footer{border-top:1px solid var(--line-soft);padding:60px 26px 44px;margin-top:2
         <circle cx="60" cy="14" r="4" stroke="#E7CE96" stroke-width="1.6"/>
       </svg>
     </div>
-    <span class="tap-hint">가만히 눌러보세요</span>
+    <span class="tap-hint" data-i18n="hero.taphint">가만히 눌러보세요</span>
   </div>
 
-  <h1>고향의 소리로<br><em>마음을 쉬게 하다</em></h1>
+  <h1 data-i18n="hero.h1">고향의 소리로<br><em>마음을 쉬게 하다</em></h1>
   <div class="sub-en">The sound of Asian stillness.</div>
-  <p class="lead">대금의 숨결, 가야금의 여운, 산사에 내리는 비. 서양의 앰비언트가 닿지 못한 아시아의 소리로, 잠들고 명상하고 다시 고요해집니다.</p>
+  <p class="lead" data-i18n="hero.lead">대금의 숨결, 가야금의 여운, 산사에 내리는 비. 서양의 앰비언트가 닿지 못한 아시아의 소리로, 잠들고 명상하고 다시 고요해집니다.</p>
 
   <div class="hero-cta">
-    <button class="btn btn-primary" onclick="scrollToId('pricing')">무료로 듣기 시작</button>
-    <button class="btn btn-ghost" onclick="scrollToId('sounds')">먼저 들어보기</button>
+    <button class="btn btn-primary" data-i18n="hero.cta1" onclick="scrollToId('pricing')">무료로 듣기 시작</button>
+    <button class="btn btn-ghost" data-i18n="hero.cta2" onclick="scrollToId('sounds')">먼저 들어보기</button>
   </div>
-  <div class="trust"><b>4.9</b> ★ 초기 체험단 평가 · 광고 없는 조용한 공간 · 언제든 해지</div>
+  <div class="trust" data-i18n="hero.trust"><b>4.9</b> ★ 초기 체험단 평가 · 광고 없는 조용한 공간 · 언제든 해지</div>
 </section>
 
 <!-- ══ 사운드 라이브러리 (시그니처) ══ -->
 <section id="sounds" class="section-pad">
   <div class="wrap">
     <div class="sec-head">
-      <div class="sec-eyebrow">Listen now · 지금, 소리</div>
-      <h2>설명 대신, <em>바로 들어보세요</em></h2>
-      <p>아래 소리는 이 페이지에서 실제로 재생됩니다. 여러 개를 겹쳐 나만의 고요를 만들 수 있어요. 이어폰을 끼면 더 좋습니다.</p>
+      <div class="sec-eyebrow" data-i18n="sounds.eyebrow">Listen now · 지금, 소리</div>
+      <h2 data-i18n="sounds.h2">설명 대신, <em>바로 들어보세요</em></h2>
+      <p data-i18n="sounds.p">아래 소리는 이 페이지에서 실제로 재생됩니다. 여러 개를 겹쳐 나만의 고요를 만들 수 있어요. 이어폰을 끼면 더 좋습니다.</p>
     </div>
 
-    <div class="player-note"><span class="dot"></span>브라우저에서 바로 재생되는 라이브 사운드 · 로그인 불필요</div>
+    <div class="player-note"><span class="dot"></span><span data-i18n="sounds.note">브라우저에서 바로 재생되는 라이브 사운드 · 로그인 불필요</span></div>
 
     <div class="sounds" id="soundGrid"></div>
 
     <div class="master-bar">
-      <span class="mix-tag">현재 재생 중: <b id="mixCount">0</b>겹</span>
-      <button class="btn btn-ghost" id="stopAll" onclick="stopAllSounds()">모두 멈추기</button>
+      <span class="mix-tag"><span data-i18n="sounds.mixprefix">현재 재생 중:</span> <b id="mixCount">0</b><span data-i18n="sounds.mixsuffix">겹</span></span>
+      <button class="btn btn-ghost" id="stopAll" data-i18n="sounds.stopall" onclick="stopAllSounds()">모두 멈추기</button>
     </div>
   </div>
 </section>
@@ -413,24 +422,24 @@ footer{border-top:1px solid var(--line-soft);padding:60px 26px 44px;margin-top:2
 <section id="pillars" class="section-pad">
   <div class="wrap">
     <div class="sec-head">
-      <div class="sec-eyebrow">Why Goyo · 세 가지 쉼</div>
-      <h2>당신의 하루를 <em>가만히 붙잡아 드립니다</em></h2>
+      <div class="sec-eyebrow" data-i18n="pillars.eyebrow">Why Goyo · 세 가지 쉼</div>
+      <h2 data-i18n="pillars.h2">당신의 하루를 <em>가만히 붙잡아 드립니다</em></h2>
     </div>
     <div class="pillars">
       <div class="pillar">
         <svg class="icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M28 21a10 10 0 1 1-11-13 8 8 0 0 0 11 13Z" stroke-linejoin="round"/><path d="M23 12l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2Z" fill="currentColor" stroke="none"/></svg>
-        <h3>깊은 잠</h3>
-        <p>대금 자장가와 산사의 빗소리가 뒤척임을 잠재웁니다. 잠들면 저절로 꺼지는 수면 타이머로, 밤새 배터리와 마음을 아끼세요.</p>
+        <h3 data-i18n="pillar1.h3">깊은 잠</h3>
+        <p data-i18n="pillar1.p">대금 자장가와 산사의 빗소리가 뒤척임을 잠재웁니다. 잠들면 저절로 꺼지는 수면 타이머로, 밤새 배터리와 마음을 아끼세요.</p>
       </div>
       <div class="pillar">
         <svg class="icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="20" cy="20" r="13"/><path d="M20 12v8l5 3" stroke-linecap="round"/></svg>
-        <h3>단정한 명상</h3>
-        <p>불안·집중·감사. 한국어로 안내하는 3~20분 명상과 다도 호흡 루틴. 하루 한 편, 오늘의 고요로 매일을 엽니다.</p>
+        <h3 data-i18n="pillar2.h3">단정한 명상</h3>
+        <p data-i18n="pillar2.p">불안·집중·감사. 한국어로 안내하는 3~20분 명상과 다도 호흡 루틴. 하루 한 편, 오늘의 고요로 매일을 엽니다.</p>
       </div>
       <div class="pillar">
         <svg class="icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M20 30s-9-5.5-9-12a5.5 5.5 0 0 1 9-4.2A5.5 5.5 0 0 1 29 18c0 6.5-9 12-9 12Z" stroke-linejoin="round"/></svg>
-        <h3>고향의 소리</h3>
-        <p>범종, 풍경, 대나무 숲의 바람. 멀리 떠나온 마음이 잠시 돌아가 쉴 수 있는, 대형 앱이 흉내 낼 수 없는 정서의 소리입니다.</p>
+        <h3 data-i18n="pillar3.h3">고향의 소리</h3>
+        <p data-i18n="pillar3.p">범종, 풍경, 대나무 숲의 바람. 멀리 떠나온 마음이 잠시 돌아가 쉴 수 있는, 대형 앱이 흉내 낼 수 없는 정서의 소리입니다.</p>
       </div>
     </div>
   </div>
@@ -440,17 +449,17 @@ footer{border-top:1px solid var(--line-soft);padding:60px 26px 44px;margin-top:2
 <section id="collections" class="section-pad">
   <div class="wrap">
     <div class="sec-head">
-      <div class="sec-eyebrow">Collections · 소리의 결</div>
-      <h2>아시아의 소리를 <em>결마다 담았습니다</em></h2>
-      <p>전통 악기부터 자연, 모국어 명상까지. 취향과 밤의 기분에 맞춰 고르세요.</p>
+      <div class="sec-eyebrow" data-i18n="coll.eyebrow">Collections · 소리의 결</div>
+      <h2 data-i18n="coll.h2">아시아의 소리를 <em>결마다 담았습니다</em></h2>
+      <p data-i18n="coll.p">전통 악기부터 자연, 모국어 명상까지. 취향과 밤의 기분에 맞춰 고르세요.</p>
     </div>
     <div class="collections">
-      <div class="coll"><div class="bg c1"></div><div class="veil"></div><div class="kicker">한국 전통</div><h4>대금·가야금·해금</h4><p>느린 산조와 정악의 여백</p></div>
-      <div class="coll"><div class="bg c2"></div><div class="veil"></div><div class="kicker">사찰의 소리</div><h4>범종·목탁·풍경</h4><p>산사의 새벽, 마음을 씻는 울림</p></div>
-      <div class="coll"><div class="bg c3"></div><div class="veil"></div><div class="kicker">자연·계절</div><h4>산사의 비·계곡물</h4><p>제주 파도와 대나무 숲 바람</p></div>
-      <div class="coll"><div class="bg c4"></div><div class="veil"></div><div class="kicker">아시아 확장</div><h4>젠·고금·싱잉볼</h4><p>일본·중국·티베트의 명상 소리</p></div>
-      <div class="coll"><div class="bg c5"></div><div class="veil"></div><div class="kicker">모국어 명상</div><h4>한국어 유도 명상</h4><p>수면·불안·감사 · 한·영 이중언어</p></div>
-      <div class="coll"><div class="bg c6"></div><div class="veil"></div><div class="kicker">한방·다도</div><h4>다도 호흡 루틴</h4><p>명상 전, 차 한 잔의 준비</p></div>
+      <div class="coll"><div class="bg c1"></div><div class="veil"></div><div class="kicker" data-i18n="c1.kicker">한국 전통</div><h4 data-i18n="c1.h4">대금·가야금·해금</h4><p data-i18n="c1.p">느린 산조와 정악의 여백</p></div>
+      <div class="coll"><div class="bg c2"></div><div class="veil"></div><div class="kicker" data-i18n="c2.kicker">사찰의 소리</div><h4 data-i18n="c2.h4">범종·목탁·풍경</h4><p data-i18n="c2.p">산사의 새벽, 마음을 씻는 울림</p></div>
+      <div class="coll"><div class="bg c3"></div><div class="veil"></div><div class="kicker" data-i18n="c3.kicker">자연·계절</div><h4 data-i18n="c3.h4">산사의 비·계곡물</h4><p data-i18n="c3.p">제주 파도와 대나무 숲 바람</p></div>
+      <div class="coll"><div class="bg c4"></div><div class="veil"></div><div class="kicker" data-i18n="c4.kicker">아시아 확장</div><h4 data-i18n="c4.h4">젠·고금·싱잉볼</h4><p data-i18n="c4.p">일본·중국·티베트의 명상 소리</p></div>
+      <div class="coll"><div class="bg c5"></div><div class="veil"></div><div class="kicker" data-i18n="c5.kicker">모국어 명상</div><h4 data-i18n="c5.h4">한국어 유도 명상</h4><p data-i18n="c5.p">수면·불안·감사 · 한·영 이중언어</p></div>
+      <div class="coll"><div class="bg c6"></div><div class="veil"></div><div class="kicker" data-i18n="c6.kicker">한방·다도</div><h4 data-i18n="c6.h4">다도 호흡 루틴</h4><p data-i18n="c6.p">명상 전, 차 한 잔의 준비</p></div>
     </div>
   </div>
 </section>
@@ -461,18 +470,18 @@ footer{border-top:1px solid var(--line-soft);padding:60px 26px 44px;margin-top:2
     <div class="reviews-head">
       <div class="stars">★★★★★</div>
       <div class="sec-head" style="margin-top:14px">
-        <h2>먼저 들어본 이들의 <em>고요한 밤</em></h2>
+        <h2 data-i18n="rev.h2">먼저 들어본 이들의 <em>고요한 밤</em></h2>
       </div>
     </div>
     <div class="reviews">
-      <div class="review"><p>“가야금 소리에 아이를 재우다 제가 먼저 잠들었어요. 어릴 적 외할머니 댁 마루에 누운 기분이었습니다.”</p><div class="who">지현 · 토론토</div></div>
-      <div class="review"><p>“타국 생활 10년, 범종 소리 하나에 마음이 이렇게 풀릴 줄 몰랐네요. 밤마다 켜 둡니다.”</p><div class="who">Daniel K. · 밴쿠버</div></div>
-      <div class="review"><p>“영어 명상 앱은 늘 겉돌았는데, 모국어로 안내해 주니 처음으로 명상이 스며들었어요.”</p><div class="who">수경 · 시카고</div></div>
-      <div class="review"><p>“산사의 빗소리로 하루를 닫습니다. 광고가 없어서 더 조용하고 좋아요.”</p><div class="who">Grace · 뉴욕</div></div>
-      <div class="review"><p>“여러 소리를 겹쳐 나만의 밤을 만드는 게 재밌어요. 대금 + 비 조합이 최애입니다.”</p><div class="who">현우 · 로스앤젤레스</div></div>
-      <div class="review"><p>“출근 전 5분, 다도 호흡으로 하루를 시작해요. 사소한데 하루가 달라집니다.”</p><div class="who">민아 · 마컴</div></div>
+      <div class="review"><p data-i18n="rev1.p">“가야금 소리에 아이를 재우다 제가 먼저 잠들었어요. 어릴 적 외할머니 댁 마루에 누운 기분이었습니다.”</p><div class="who">지현 · 토론토</div></div>
+      <div class="review"><p data-i18n="rev2.p">“타국 생활 10년, 범종 소리 하나에 마음이 이렇게 풀릴 줄 몰랐네요. 밤마다 켜 둡니다.”</p><div class="who">Daniel K. · 밴쿠버</div></div>
+      <div class="review"><p data-i18n="rev3.p">“영어 명상 앱은 늘 겉돌았는데, 모국어로 안내해 주니 처음으로 명상이 스며들었어요.”</p><div class="who">수경 · 시카고</div></div>
+      <div class="review"><p data-i18n="rev4.p">“산사의 빗소리로 하루를 닫습니다. 광고가 없어서 더 조용하고 좋아요.”</p><div class="who">Grace · 뉴욕</div></div>
+      <div class="review"><p data-i18n="rev5.p">“여러 소리를 겹쳐 나만의 밤을 만드는 게 재밌어요. 대금 + 비 조합이 최애입니다.”</p><div class="who">현우 · 로스앤젤레스</div></div>
+      <div class="review"><p data-i18n="rev6.p">“출근 전 5분, 다도 호흡으로 하루를 시작해요. 사소한데 하루가 달라집니다.”</p><div class="who">민아 · 마컴</div></div>
     </div>
-    <div class="sample-tag">※ 위 후기는 초기 체험단의 반응을 바탕으로 한 예시입니다.</div>
+    <div class="sample-tag" data-i18n="rev.sample">※ 위 후기는 초기 체험단의 반응을 바탕으로 한 예시입니다.</div>
   </div>
 </section>
 
@@ -480,54 +489,54 @@ footer{border-top:1px solid var(--line-soft);padding:60px 26px 44px;margin-top:2
 <section id="pricing" class="section-pad">
   <div class="wrap">
     <div class="sec-head">
-      <div class="sec-eyebrow">Membership · 고요 멤버십</div>
-      <h2>먼저 무료로, <em>마음에 들면 함께</em></h2>
-      <p>핵심 소리는 언제나 무료입니다. 전체 라이브러리·고음질·오프라인 저장은 멤버십으로 열립니다.</p>
+      <div class="sec-eyebrow" data-i18n="price.eyebrow">Membership · 고요 멤버십</div>
+      <h2 data-i18n="price.h2">먼저 무료로, <em>마음에 들면 함께</em></h2>
+      <p data-i18n="price.p">핵심 소리는 언제나 무료입니다. 전체 라이브러리·고음질·오프라인 저장은 멤버십으로 열립니다.</p>
     </div>
 
     <div class="pricing">
       <div class="plan">
-        <div class="p-name">월간</div>
-        <div class="p-price">$7.99<small>/월</small></div>
-        <div class="p-note">부담 없이 시작</div>
+        <div class="p-name" data-i18n="plan1.name">월간</div>
+        <div class="p-price">$7.99<small data-i18n="price.permonth">/월</small></div>
+        <div class="p-note" data-i18n="plan1.note">부담 없이 시작</div>
         <ul>
-          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/></svg>전체 소리 라이브러리</li>
-          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/></svg>고음질 스트리밍</li>
-          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/></svg>한국어 유도 명상 코스</li>
-          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/></svg>언제든 해지</li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/></svg><span data-i18n="plan1.li1">전체 소리 라이브러리</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/></svg><span data-i18n="plan1.li2">고음질 스트리밍</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/></svg><span data-i18n="plan1.li3">한국어 유도 명상 코스</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/></svg><span data-i18n="plan1.li4">언제든 해지</span></li>
         </ul>
-        <button class="btn btn-ghost" onclick="startSubscribe('monthly')">월간으로 시작</button>
+        <button class="btn btn-ghost" data-i18n="plan1.btn" onclick="startSubscribe('monthly')">월간으로 시작</button>
       </div>
 
       <div class="plan featured">
-        <div class="tag">가장 인기 · 37% 절약</div>
-        <div class="p-name">연간</div>
-        <div class="p-price">$59.99<small>/년</small></div>
-        <div class="p-note">월 $5.00 꼴</div>
+        <div class="tag" data-i18n="plan2.tag">가장 인기 · 37% 절약</div>
+        <div class="p-name" data-i18n="plan2.name">연간</div>
+        <div class="p-price">$59.99<small data-i18n="price.peryear">/년</small></div>
+        <div class="p-note" data-i18n="plan2.note">월 $5.00 꼴</div>
         <ul>
-          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/></svg>월간의 모든 혜택</li>
-          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/></svg>오프라인 저장·백그라운드 재생</li>
-          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/></svg>신규 소리·코스 우선 공개</li>
-          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/></svg>7일 무료 체험</li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/></svg><span data-i18n="plan2.li1">월간의 모든 혜택</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/></svg><span data-i18n="plan2.li2">오프라인 저장·백그라운드 재생</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/></svg><span data-i18n="plan2.li3">신규 소리·코스 우선 공개</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/></svg><span data-i18n="plan2.li4">7일 무료 체험</span></li>
         </ul>
-        <button class="btn btn-primary" onclick="startSubscribe('annual')">7일 무료로 시작</button>
+        <button class="btn btn-primary" data-i18n="plan2.btn" onclick="startSubscribe('annual')">7일 무료로 시작</button>
       </div>
 
       <div class="plan">
-        <div class="p-name">평생</div>
-        <div class="p-price">$199<small> 1회</small></div>
-        <div class="p-note">한 번, 영원히</div>
+        <div class="p-name" data-i18n="plan3.name">평생</div>
+        <div class="p-price">$199<small data-i18n="price.once"> 1회</small></div>
+        <div class="p-note" data-i18n="plan3.note">한 번, 영원히</div>
         <ul>
-          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/></svg>모든 혜택 평생 이용</li>
-          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/></svg>앞으로 추가되는 모든 소리</li>
-          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/></svg>구독 갱신 걱정 없음</li>
-          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/></svg>초기 후원자 배지</li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/></svg><span data-i18n="plan3.li1">모든 혜택 평생 이용</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/></svg><span data-i18n="plan3.li2">앞으로 추가되는 모든 소리</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/></svg><span data-i18n="plan3.li3">구독 갱신 걱정 없음</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/></svg><span data-i18n="plan3.li4">초기 후원자 배지</span></li>
         </ul>
-        <button class="btn btn-ghost" onclick="startSubscribe('lifetime')">평생 이용권 구매</button>
+        <button class="btn btn-ghost" data-i18n="plan3.btn" onclick="startSubscribe('lifetime')">평생 이용권 구매</button>
       </div>
     </div>
 
-    <div class="free-line">계정 없이도 핵심 소리는 무료예요. <a href="#sounds">지금 무료로 듣기 →</a></div>
+    <div class="free-line"><span data-i18n="price.freeline">계정 없이도 핵심 소리는 무료예요.</span> <a href="#sounds" data-i18n="price.freelink">지금 무료로 듣기 →</a></div>
 
     <div class="setup-hint">
       <details>
@@ -548,15 +557,15 @@ footer{border-top:1px solid var(--line-soft);padding:60px 26px 44px;margin-top:2
 <section class="section-pad">
   <div class="wrap">
     <div class="sec-head">
-      <div class="sec-eyebrow">FAQ · 자주 묻는 질문</div>
-      <h2>궁금한 것들</h2>
+      <div class="sec-eyebrow" data-i18n="faq.eyebrow">FAQ · 자주 묻는 질문</div>
+      <h2 data-i18n="faq.h2">궁금한 것들</h2>
     </div>
     <div class="faq">
-      <details class="qa"><summary>고요는 어떤 서비스인가요?</summary><div class="a">대금·가야금·범종 같은 아시아 전통악기와 자연의 소리, 그리고 한국어 유도 명상을 담은 명상·수면 사운드 서비스입니다. 서양식 앰비언트에 머문 기존 앱과 달리, 아시아 이민자의 정서에 맞춘 '고향의 소리'에 집중합니다.</div></details>
-      <details class="qa"><summary>무료로도 쓸 수 있나요?</summary><div class="a">네. 계정 없이도 핵심 소리를 자유롭게 들을 수 있습니다. 전체 라이브러리, 고음질, 오프라인 저장, 명상 코스는 멤버십에서 열립니다.</div></details>
-      <details class="qa"><summary>이 페이지에서 나는 소리는 실제인가요?</summary><div class="a">그렇습니다. 데모용으로, 브라우저의 오디오 엔진으로 범종·현·바람·비의 질감을 실시간 합성해 들려드립니다. 정식 버전에서는 실제 연주·녹음 음원으로 대체됩니다.</div></details>
-      <details class="qa"><summary>구독은 어떻게 결제·해지하나요?</summary><div class="a">결제는 Stripe로 안전하게 처리되며, 카드 정보는 저희 서버에 저장되지 않습니다. 연간·월간 구독은 자동 갱신되고, 마이페이지에서 언제든 해지할 수 있습니다. 연간 플랜은 7일 무료 체험 후 결제됩니다.</div></details>
-      <details class="qa"><summary>어떤 기기에서 쓸 수 있나요?</summary><div class="a">웹 브라우저에서 바로 사용할 수 있고, 휴대폰 홈 화면에 앱처럼 설치(PWA)해 오프라인·백그라운드 재생도 지원할 예정입니다. 이후 iOS·안드로이드 앱으로 확장됩니다.</div></details>
+      <details class="qa"><summary data-i18n="faq1.q">고요는 어떤 서비스인가요?</summary><div class="a" data-i18n="faq1.a">대금·가야금·범종 같은 아시아 전통악기와 자연의 소리, 그리고 한국어 유도 명상을 담은 명상·수면 사운드 서비스입니다. 서양식 앰비언트에 머문 기존 앱과 달리, 아시아 이민자의 정서에 맞춘 '고향의 소리'에 집중합니다.</div></details>
+      <details class="qa"><summary data-i18n="faq2.q">무료로도 쓸 수 있나요?</summary><div class="a" data-i18n="faq2.a">네. 계정 없이도 핵심 소리를 자유롭게 들을 수 있습니다. 전체 라이브러리, 고음질, 오프라인 저장, 명상 코스는 멤버십에서 열립니다.</div></details>
+      <details class="qa"><summary data-i18n="faq3.q">이 페이지에서 나는 소리는 실제인가요?</summary><div class="a" data-i18n="faq3.a">그렇습니다. 데모용으로, 브라우저의 오디오 엔진으로 범종·현·바람·비의 질감을 실시간 합성해 들려드립니다. 정식 버전에서는 실제 연주·녹음 음원으로 대체됩니다.</div></details>
+      <details class="qa"><summary data-i18n="faq4.q">구독은 어떻게 결제·해지하나요?</summary><div class="a" data-i18n="faq4.a">결제는 Stripe로 안전하게 처리되며, 카드 정보는 저희 서버에 저장되지 않습니다. 연간·월간 구독은 자동 갱신되고, 마이페이지에서 언제든 해지할 수 있습니다. 연간 플랜은 7일 무료 체험 후 결제됩니다.</div></details>
+      <details class="qa"><summary data-i18n="faq5.q">어떤 기기에서 쓸 수 있나요?</summary><div class="a" data-i18n="faq5.a">웹 브라우저에서 바로 사용할 수 있고, 휴대폰 홈 화면에 앱처럼 설치(PWA)해 오프라인·백그라운드 재생도 지원할 예정입니다. 이후 iOS·안드로이드 앱으로 확장됩니다.</div></details>
     </div>
   </div>
 </section>
@@ -564,9 +573,9 @@ footer{border-top:1px solid var(--line-soft);padding:60px 26px 44px;margin-top:2
 <!-- ══ CTA 밴드 ══ -->
 <section class="cta-band">
   <div class="aurora" style="opacity:.5"><span class="b3" style="left:30vw"></span></div>
-  <h2>오늘 밤은, <em>고향의 소리로</em> 잠드세요</h2>
-  <p>이어폰을 끼고, 불을 낮추고, 가만히 한 번 눌러보세요.</p>
-  <button class="btn btn-primary" onclick="scrollToId('sounds')">무료로 듣기 시작</button>
+  <h2 data-i18n="cta.h2">오늘 밤은, <em>고향의 소리로</em> 잠드세요</h2>
+  <p data-i18n="cta.p">이어폰을 끼고, 불을 낮추고, 가만히 한 번 눌러보세요.</p>
+  <button class="btn btn-primary" data-i18n="hero.cta1" onclick="scrollToId('sounds')">무료로 듣기 시작</button>
 </section>
 
 </main>
@@ -579,11 +588,11 @@ footer{border-top:1px solid var(--line-soft);padding:60px 26px 44px;margin-top:2
         <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="#C9A96A" stroke-width="1.2" opacity=".5"/><path d="M16 7c-4 0-6.5 3-6.5 7.5V19c0 .8-.5 1.5-1.2 2h15.4c-.7-.5-1.2-1.2-1.2-2v-4.5C22.5 10 20 7 16 7Z" stroke="#C9A96A" stroke-width="1.3" stroke-linejoin="round"/><path d="M16 4.5V7M13.5 22.5c0 1.4 1.1 2.5 2.5 2.5s2.5-1.1 2.5-2.5" stroke="#E7CE96" stroke-width="1.3" stroke-linecap="round"/></svg>
         Goyo<span class="ko">고요</span>
       </a>
-      <p class="about">대금의 숨결과 가야금의 여운으로, 멀리 떠나온 마음이 잠시 돌아가 쉬는 곳. 아시아의 소리로 잠들고 명상합니다.</p>
+      <p class="about" data-i18n="foot.about">대금의 숨결과 가야금의 여운으로, 멀리 떠나온 마음이 잠시 돌아가 쉬는 곳. 아시아의 소리로 잠들고 명상합니다.</p>
     </div>
-    <div><h5>둘러보기</h5><ul><li><a href="#sounds">소리 듣기</a></li><li><a href="#collections">컬렉션</a></li><li><a href="#pricing">멤버십</a></li><li><a href="#pillars">고요의 이유</a></li></ul></div>
-    <div><h5>회사</h5><ul><li><a href="#">소개</a></li><li><a href="#">크리에이터 모집</a></li><li><a href="#">블로그</a></li><li><a href="#">문의하기</a></li></ul></div>
-    <div><h5>정책</h5><ul><li><a href="#">이용약관</a></li><li><a href="#">개인정보처리방침</a></li><li><a href="#">환불 정책</a></li></ul></div>
+    <div><h5 data-i18n="foot.h5.explore">둘러보기</h5><ul><li><a href="#sounds" data-i18n="foot.explore1">소리 듣기</a></li><li><a href="#collections" data-i18n="nav.collections">컬렉션</a></li><li><a href="#pricing" data-i18n="nav.pricing">멤버십</a></li><li><a href="#pillars" data-i18n="foot.explore4">고요의 이유</a></li></ul></div>
+    <div><h5 data-i18n="foot.h5.company">회사</h5><ul><li><a href="#" data-i18n="foot.company1">소개</a></li><li><a href="#" data-i18n="foot.company2">크리에이터 모집</a></li><li><a href="#" data-i18n="foot.company3">블로그</a></li><li><a href="#" data-i18n="foot.company4">문의하기</a></li></ul></div>
+    <div><h5 data-i18n="foot.h5.policy">정책</h5><ul><li><a href="#" data-i18n="foot.policy1">이용약관</a></li><li><a href="#" data-i18n="foot.policy2">개인정보처리방침</a></li><li><a href="#" data-i18n="foot.policy3">환불 정책</a></li></ul></div>
   </div>
   <div class="foot-bottom">
     <span>© 2026 Goyo · 고요. Toronto Commercial Group.</span>
@@ -595,18 +604,216 @@ footer{border-top:1px solid var(--line-soft);padding:60px 26px 44px;margin-top:2
 <div class="modal-back" id="modal" onclick="if(event.target===this)closeModal()">
   <div class="modal">
     <svg class="m-bell" viewBox="0 0 120 120" fill="none"><path d="M60 20c-15 0-24 12-24 30v33c0 3-2 6-5 8h58c-3-2-5-5-5-8V50c0-18-9-30-24-30Z" stroke="#C9A96A" stroke-width="2" stroke-linejoin="round"/><path d="M60 10v10M46 91c0 6 5.5 11 14 11s14-5 14-11" stroke="#E7CE96" stroke-width="2" stroke-linecap="round"/><circle cx="60" cy="14" r="4" stroke="#E7CE96" stroke-width="2"/></svg>
-    <h3 id="mTitle">고요 멤버십</h3>
-    <p id="mDesc">아래 플랜으로 전체 라이브러리가 열립니다.</p>
+    <h3 id="mTitle" data-i18n="modal.title.default">고요 멤버십</h3>
+    <p id="mDesc" data-i18n="modal.desc.default">아래 플랜으로 전체 라이브러리가 열립니다.</p>
     <div class="m-plan"><div class="n" id="mPlanName">연간 멤버십</div><div class="pr" id="mPlanPrice">$59.99</div></div>
     <div class="m-actions">
-      <button class="btn btn-primary" id="mGo" onclick="proceedCheckout()">결제 진행</button>
-      <button class="close" onclick="closeModal()">다음에 할게요</button>
+      <button class="btn btn-primary" id="mGo" data-i18n="modal.go" onclick="proceedCheckout()">결제 진행</button>
+      <button class="close" data-i18n="modal.close" onclick="closeModal()">다음에 할게요</button>
     </div>
     <small id="mSetupNote"></small>
   </div>
 </div>
 
 <script>
+/* ══════════════ 다국어 (i18n) ══════════════
+   기본 문서는 한국어(ko)로 작성되어 있고, KO_CACHE 가 로드 시점에
+   [data-i18n] 요소들의 원문을 그대로 캡처합니다. zh/hi 는 아래
+   TRANSLATIONS 사전으로 전환됩니다.                                */
+const TRANSLATIONS={
+  zh:{
+    'meta.title':'静 · Goyo — 用亚洲之声安然入眠',
+    'meta.desc':'大笒·伽倻琴·梵钟·山寺细雨。用亚洲传统乐器与自然之声打造的冥想与睡眠音效。现在就免费聆听。',
+    'meta.ogdesc':'用亚洲传统乐器与自然之声打造的冥想与睡眠音效。',
+    'nav.sounds':'声音','nav.collections':'合集','nav.pillars':'理由','nav.pricing':'会员',
+    'nav.login':'登录','nav.cta':'免费开始','nav.brand.aria':'静 首页','nav.menu.aria':'菜单',
+    'hero.eyebrow':'亚洲之声 · 冥想与睡眠','hero.bell.aria':'聆听梵钟之声','hero.taphint':'轻轻点一下',
+    'hero.h1':'用故乡之声<br><em>让心安顿下来</em>',
+    'hero.lead':'大笒的气息、伽倻琴的余韵、山寺落下的雨声。用西方氛围音乐无法触及的亚洲之声,入眠、冥想,再度归于平静。',
+    'hero.cta1':'免费开始聆听','hero.cta2':'先试听一下',
+    'hero.trust':'<b>4.9</b> ★ 早期体验用户评分 · 无广告的静谧空间 · 随时可取消',
+    'sounds.eyebrow':'Listen now · 现在,聆听',
+    'sounds.h2':'与其看说明,<em>不如直接聆听</em>',
+    'sounds.p':'以下声音会在本页面上实际播放。你可以叠加多个声音,打造属于自己的静谧。戴上耳机效果更佳。',
+    'sounds.note':'浏览器中实时播放的现场音效 · 无需登录',
+    'sounds.mixprefix':'当前播放:','sounds.mixsuffix':'层','sounds.stopall':'全部停止',
+    'pillars.eyebrow':'Why Goyo · 三种安顿',
+    'pillars.h2':'静静地,<em>为你留住这一天</em>',
+    'pillar1.h3':'深度睡眠','pillar1.p':'大笒摇篮曲与山寺雨声安抚辗转难眠的夜晚。入睡后自动关闭的睡眠定时器,整夜为你节省电量与心力。',
+    'pillar2.h3':'静心冥想','pillar2.p':'焦虑·专注·感恩。以韩语引导的3~20分钟冥想与茶道呼吸练习。每天一段,以今日的静谧开启每一天。',
+    'pillar3.h3':'故乡之声','pillar3.p':'梵钟、风铃、竹林之风。让远行的心得以片刻归乡歇息,是大型应用无法模仿的情感之声。',
+    'coll.eyebrow':'Collections · 声音的纹理',
+    'coll.h2':'将亚洲的声音<em>一层层收录其中</em>',
+    'coll.p':'从传统乐器到自然之声,再到母语冥想。根据喜好与夜晚的心情自由选择。',
+    'c1.kicker':'韩国传统','c1.h4':'大笒·伽倻琴·奚琴','c1.p':'缓慢散调与正乐的留白',
+    'c2.kicker':'寺院之声','c2.h4':'梵钟·木鱼·风铃','c2.p':'山寺清晨,涤净心灵的回响',
+    'c3.kicker':'自然·四季','c3.h4':'山寺细雨·溪流水声','c3.p':'济州海浪与竹林之风',
+    'c4.kicker':'亚洲扩展','c4.h4':'禅·古琴·颂钵','c4.p':'日本·中国·西藏的冥想之声',
+    'c5.kicker':'母语冥想','c5.h4':'韩语引导冥想','c5.p':'睡眠·焦虑·感恩 · 韩英双语',
+    'c6.kicker':'韩方·茶道','c6.h4':'茶道呼吸练习','c6.p':'冥想之前,先备一杯茶',
+    'rev.h2':'先行体验者的<em>静谧之夜</em>',
+    'rev1.p':'"用伽倻琴声哄孩子入睡,结果自己先睡着了。仿佛回到小时候躺在外婆家木地板上的感觉。"',
+    'rev2.p':'"在异国生活十年,没想到一声梵钟就能让心这样放松下来。我每晚都会播放。"',
+    'rev3.p':'"英文冥想应用总让我觉得隔靴搔痒,而用母语引导后,我第一次真正感受到冥想融入了内心。"',
+    'rev4.p':'"用山寺的雨声结束一天。没有广告,更加安静美好。"',
+    'rev5.p':'"把几种声音叠加,打造属于自己的夜晚,很有意思。大笒加雨声的组合是我的最爱。"',
+    'rev6.p':'"上班前的5分钟,用茶道呼吸开启一天。虽然很小,却让每一天都不一样。"',
+    'rev.sample':'※ 以上评价基于早期体验团的反馈,仅作示例。',
+    'price.eyebrow':'Membership · 静会员',
+    'price.h2':'先免费体验,<em>喜欢再一起</em>',
+    'price.p':'核心音效永远免费。完整音效库、高音质与离线保存需通过会员开启。',
+    'plan1.name':'月度','plan1.note':'轻松开始',
+    'plan1.li1':'完整音效库','plan1.li2':'高音质流媒体','plan1.li3':'韩语引导冥想课程','plan1.li4':'随时取消','plan1.btn':'以月度开始',
+    'plan2.tag':'最受欢迎 · 节省37%','plan2.name':'年度','plan2.note':'折合每月$5.00',
+    'plan2.li1':'月度方案的所有权益','plan2.li2':'离线保存·后台播放','plan2.li3':'新音效·课程优先体验','plan2.li4':'7天免费试用','plan2.btn':'7天免费开始',
+    'plan3.name':'终身','plan3.note':'一次付费,终身使用',
+    'plan3.li1':'终身享受所有权益','plan3.li2':'未来新增的所有音效','plan3.li3':'无需担心订阅续费','plan3.li4':'早期支持者徽章','plan3.btn':'购买终身使用权',
+    'price.freeline':'无需注册,核心音效即可免费畅听。','price.freelink':'立即免费聆听 →',
+    'price.permonth':'/月','price.peryear':'/年','price.once':' 一次性',
+    'faq.eyebrow':'FAQ · 常见问题','faq.h2':'你可能想知道的',
+    'faq1.q':'「静(Goyo)」是怎样的服务?',
+    'faq1.a':'这是一项冥想与睡眠音效服务,收录大笒、伽倻琴、梵钟等亚洲传统乐器与自然之声,并配有韩语引导冥想。与停留在西式氛围音乐的既有应用不同,我们专注于契合亚洲移民情感的"故乡之声"。',
+    'faq2.q':'可以免费使用吗?',
+    'faq2.a':'可以。无需注册账号即可自由聆听核心音效。完整音效库、高音质、离线保存和冥想课程需通过会员开启。',
+    'faq3.q':'这个页面中的声音是真实的吗?',
+    'faq3.a':'是的。作为演示,我们通过浏览器的音频引擎实时合成梵钟、弦乐、风声与雨声的质感。正式版本将替换为真实演奏与录音音源。',
+    'faq4.q':'订阅如何付款与取消?',
+    'faq4.a':'付款通过Stripe安全处理,卡片信息不会保存在我们的服务器上。年度与月度订阅会自动续订,您可以随时在个人页面取消。年度方案在7天免费试用后开始计费。',
+    'faq5.q':'可以在哪些设备上使用?',
+    'faq5.a':'可直接在网页浏览器中使用,未来还将支持以PWA形式安装到手机主屏幕,实现离线与后台播放。之后将扩展至iOS与安卓应用。',
+    'cta.h2':'今夜,<em>请以故乡之声</em>入眠',
+    'cta.p':'戴上耳机,调暗灯光,轻轻按下播放键。',
+    'foot.about':'以大笒的气息与伽倻琴的余韵,让远行的心得以片刻归乡歇息。用亚洲之声入眠与冥想。',
+    'foot.h5.explore':'浏览','foot.explore1':'聆听声音','foot.explore4':'静的理由',
+    'foot.h5.company':'公司','foot.company1':'关于我们','foot.company2':'招募创作者','foot.company3':'博客','foot.company4':'联系我们',
+    'foot.h5.policy':'政策','foot.policy1':'使用条款','foot.policy2':'隐私政策','foot.policy3':'退款政策',
+    'modal.title.default':'静会员','modal.desc.default':'以下方案将开启完整音效库。',
+    'modal.go':'前往付款','modal.close':'下次再说'
+  },
+  hi:{
+    'meta.title':'गोयो · Goyo — एशिया की ध्वनियों में शांति से सोएं',
+    'meta.desc':'देगम बांसुरी, गयागुम, मंदिर की घंटी, पहाड़ी मंदिर की बारिश। एशियाई पारंपरिक वाद्ययंत्रों और प्रकृति की ध्वनियों से बना ध्यान और नींद का साउंडस्केप। अभी मुफ़्त में सुनें।',
+    'meta.ogdesc':'एशियाई पारंपरिक वाद्ययंत्रों और प्रकृति की ध्वनियों से बना ध्यान और नींद का साउंडस्केप।',
+    'nav.sounds':'ध्वनियाँ','nav.collections':'संग्रह','nav.pillars':'कारण','nav.pricing':'सदस्यता',
+    'nav.login':'लॉगिन','nav.cta':'मुफ़्त में शुरू करें','nav.brand.aria':'गोयो होम','nav.menu.aria':'मेनू',
+    'hero.eyebrow':'एशिया की ध्वनि · ध्यान और नींद','hero.bell.aria':'मंदिर की घंटी सुनें','hero.taphint':'धीरे से दबाएं',
+    'hero.h1':'घर की ध्वनियों से<br><em>मन को विश्राम दें</em>',
+    'hero.lead':'देगम की सांस, गयागुम की गूंज, पहाड़ी मंदिर पर गिरती बारिश। पश्चिमी एम्बिएंट संगीत जहां नहीं पहुंच पाता, वहां एशिया की ध्वनियों के साथ सोएं, ध्यान करें और फिर से शांत हो जाएं।',
+    'hero.cta1':'मुफ़्त में सुनना शुरू करें','hero.cta2':'पहले सुनकर देखें',
+    'hero.trust':'<b>4.9</b> ★ शुरुआती उपयोगकर्ताओं की रेटिंग · बिना विज्ञापन शांत स्थान · कभी भी रद्द करें',
+    'sounds.eyebrow':'Listen now · अभी सुनें',
+    'sounds.h2':'विवरण की बजाय, <em>अभी सुनकर देखें</em>',
+    'sounds.p':'नीचे दी गई ध्वनियाँ इसी पेज पर वास्तव में चलती हैं। आप कई ध्वनियों को एक साथ मिलाकर अपनी खुद की शांति बना सकते हैं। ईयरफ़ोन लगाने पर अनुभव और बेहतर होता है।',
+    'sounds.note':'ब्राउज़र में सीधे चलने वाली लाइव ध्वनि · लॉगिन की आवश्यकता नहीं',
+    'sounds.mixprefix':'वर्तमान में चल रहा है:','sounds.mixsuffix':'लेयर','sounds.stopall':'सभी बंद करें',
+    'pillars.eyebrow':'Why Goyo · तीन प्रकार का विश्राम',
+    'pillars.h2':'आपके दिन को <em>धीरे से थाम लेते हैं</em>',
+    'pillar1.h3':'गहरी नींद','pillar1.p':'देगम की लोरी और मंदिर की बारिश की आवाज़ करवटें बदलने को शांत करती है। सोते ही अपने आप बंद होने वाले स्लीप टाइमर से, रातभर बैटरी और मन दोनों की बचत करें।',
+    'pillar2.h3':'सुव्यवस्थित ध्यान','pillar2.p':'चिंता · एकाग्रता · कृतज्ञता। कोरियाई भाषा में निर्देशित 3 से 20 मिनट का ध्यान और चाय-अनुष्ठान श्वास दिनचर्या। रोज़ एक सत्र, आज की शांति के साथ हर दिन की शुरुआत करें।',
+    'pillar3.h3':'घर की ध्वनि','pillar3.p':'मंदिर की घंटी, विंड चाइम, बांस के जंगल की हवा। दूर आ चुके मन को कुछ समय के लिए घर लौटने और आराम करने देने वाली, बड़े ऐप्स द्वारा नकल न की जा सकने वाली भावनात्मक ध्वनि।',
+    'coll.eyebrow':'Collections · ध्वनि की बनावट',
+    'coll.h2':'एशिया की ध्वनियों को <em>हर परत में समेटा है</em>',
+    'coll.p':'पारंपरिक वाद्ययंत्रों से लेकर प्रकृति और मातृभाषा में ध्यान तक। अपनी पसंद और रात के मूड के अनुसार चुनें।',
+    'c1.kicker':'कोरियाई परंपरा','c1.h4':'देगम · गयागुम · हेगुम','c1.p':'धीमी सनजो और शास्त्रीय संगीत का खालीपन',
+    'c2.kicker':'मंदिर की ध्वनि','c2.h4':'मंदिर की घंटी · मोकतक · विंड चाइम','c2.p':'पहाड़ी मंदिर की सुबह, मन को धोने वाली गूंज',
+    'c3.kicker':'प्रकृति · ऋतुएं','c3.h4':'मंदिर की बारिश · घाटी का पानी','c3.p':'जेजू की लहरें और बांस के जंगल की हवा',
+    'c4.kicker':'एशिया विस्तार','c4.h4':'ज़ेन · गुकिन · सिंगिंग बाउल','c4.p':'जापान, चीन और तिब्बत की ध्यान ध्वनियाँ',
+    'c5.kicker':'मातृभाषा ध्यान','c5.h4':'कोरियाई निर्देशित ध्यान','c5.p':'नींद · चिंता · कृतज्ञता · कोरियाई-अंग्रेज़ी द्विभाषी',
+    'c6.kicker':'हर्बल · चाय अनुष्ठान','c6.h4':'चाय-अनुष्ठान श्वास दिनचर्या','c6.p':'ध्यान से पहले, एक कप चाय की तैयारी',
+    'rev.h2':'पहले से सुन चुके लोगों की <em>शांत रातें</em>',
+    'rev1.p':'"गयागुम की आवाज़ से बच्चे को सुलाते-सुलाते मैं खुद पहले सो गई। बचपन में नानी के घर के बरामदे में लेटने जैसा एहसास हुआ।"',
+    'rev2.p':'"विदेश में 10 साल रहने के बाद, मंदिर की घंटी की एक ध्वनि से मन इतना शांत हो जाएगा, यह सोचा नहीं था। हर रात इसे चलाकर रखती हूं।"',
+    'rev3.p':'"अंग्रेज़ी ध्यान ऐप्स हमेशा दूर-दूर से लगते थे, लेकिन मातृभाषा में मार्गदर्शन मिलने पर पहली बार ध्यान वाकई मन में उतरा।"',
+    'rev4.p':'"मंदिर की बारिश की आवाज़ से दिन को समाप्त करती हूं। विज्ञापन न होने से यह और भी शांत और अच्छा लगता है।"',
+    'rev5.p':'"कई ध्वनियों को मिलाकर अपनी खुद की रात बनाना बहुत मज़ेदार है। देगम + बारिश का संयोजन मेरा पसंदीदा है।"',
+    'rev6.p':'"काम पर जाने से पहले 5 मिनट, चाय-अनुष्ठान श्वास से दिन शुरू करती हूं। छोटी बात है, पर पूरा दिन बदल जाता है।"',
+    'rev.sample':'※ ऊपर दी गई समीक्षाएं शुरुआती परीक्षण समूह की प्रतिक्रियाओं पर आधारित उदाहरण हैं।',
+    'price.eyebrow':'Membership · गोयो सदस्यता',
+    'price.h2':'पहले मुफ़्त में आज़माएं, <em>पसंद आए तो साथ जुड़ें</em>',
+    'price.p':'मुख्य ध्वनियाँ हमेशा मुफ़्त हैं। पूरी लाइब्रेरी, हाई-क्वालिटी और ऑफ़लाइन सेव सदस्यता से खुलती हैं।',
+    'plan1.name':'मासिक','plan1.note':'बिना किसी बोझ के शुरुआत',
+    'plan1.li1':'पूरी ध्वनि लाइब्रेरी','plan1.li2':'हाई-क्वालिटी स्ट्रीमिंग','plan1.li3':'कोरियाई निर्देशित ध्यान कोर्स','plan1.li4':'कभी भी रद्द करें','plan1.btn':'मासिक योजना शुरू करें',
+    'plan2.tag':'सबसे लोकप्रिय · 37% की बचत','plan2.name':'वार्षिक','plan2.note':'लगभग $5.00 प्रति माह',
+    'plan2.li1':'मासिक योजना के सभी लाभ','plan2.li2':'ऑफ़लाइन सेव · बैकग्राउंड प्लेबैक','plan2.li3':'नई ध्वनियों और कोर्स तक सबसे पहले पहुंच','plan2.li4':'7 दिन का मुफ़्त ट्रायल','plan2.btn':'7 दिन मुफ़्त में शुरू करें',
+    'plan3.name':'आजीवन','plan3.note':'एक बार, हमेशा के लिए',
+    'plan3.li1':'सभी लाभ जीवनभर के लिए','plan3.li2':'भविष्य में जोड़ी जाने वाली सभी ध्वनियाँ','plan3.li3':'सब्सक्रिप्शन रिन्यू की चिंता नहीं','plan3.li4':'शुरुआती सहयोगी बैज','plan3.btn':'आजीवन पास खरीदें',
+    'price.freeline':'बिना अकाउंट के भी मुख्य ध्वनियाँ मुफ़्त हैं।','price.freelink':'अभी मुफ़्त में सुनें →',
+    'price.permonth':'/माह','price.peryear':'/वर्ष','price.once':' एकमुश्त',
+    'faq.eyebrow':'FAQ · अक्सर पूछे जाने वाले प्रश्न','faq.h2':'जो जानना चाहेंगे',
+    'faq1.q':'गोयो किस तरह की सेवा है?',
+    'faq1.a':'यह देगम, गयागुम, मंदिर की घंटी जैसे एशियाई पारंपरिक वाद्ययंत्रों, प्रकृति की ध्वनियों और कोरियाई निर्देशित ध्यान को समेटे एक ध्यान व नींद साउंड सेवा है। पश्चिमी एम्बिएंट संगीत तक सीमित मौजूदा ऐप्स से अलग, हम एशियाई प्रवासियों की भावनाओं के अनुरूप \'घर की ध्वनि\' पर केंद्रित हैं।',
+    'faq2.q':'क्या इसे मुफ़्त में इस्तेमाल किया जा सकता है?',
+    'faq2.a':'जी हां। बिना अकाउंट के भी मुख्य ध्वनियाँ स्वतंत्र रूप से सुनी जा सकती हैं। पूरी लाइब्रेरी, हाई-क्वालिटी, ऑफ़लाइन सेव और ध्यान कोर्स सदस्यता से खुलते हैं।',
+    'faq3.q':'इस पेज पर आने वाली ध्वनि क्या असली है?',
+    'faq3.a':'जी हां। डेमो के तौर पर, ब्राउज़र के ऑडियो इंजन से घंटी, तार वाद्य, हवा और बारिश की बनावट को रीयल-टाइम में संश्लेषित कर सुनाया जाता है। पूर्ण संस्करण में इन्हें वास्तविक वादन और रिकॉर्डिंग से बदल दिया जाएगा।',
+    'faq4.q':'सब्सक्रिप्शन का भुगतान और रद्द कैसे करें?',
+    'faq4.a':'भुगतान Stripe के ज़रिए सुरक्षित रूप से प्रोसेस होता है, और कार्ड की जानकारी हमारे सर्वर पर सेव नहीं होती। वार्षिक और मासिक सब्सक्रिप्शन अपने आप रिन्यू होते हैं, और आप कभी भी माय पेज से रद्द कर सकते हैं। वार्षिक योजना 7 दिन के मुफ़्त ट्रायल के बाद चार्ज होती है।',
+    'faq5.q':'किन उपकरणों पर इस्तेमाल किया जा सकता है?',
+    'faq5.a':'वेब ब्राउज़र में सीधे इस्तेमाल किया जा सकता है, और भविष्य में फ़ोन की होम स्क्रीन पर ऐप की तरह इंस्टॉल (PWA) कर ऑफ़लाइन व बैकग्राउंड प्लेबैक भी समर्थित होगा। इसके बाद iOS और एंड्रॉइड ऐप में विस्तार किया जाएगा।',
+    'cta.h2':'आज रात, <em>घर की ध्वनियों के साथ</em> सो जाएं',
+    'cta.p':'ईयरफ़ोन लगाएं, लाइट धीमी करें, और धीरे से एक बार दबाकर देखें।',
+    'foot.about':'देगम की सांस और गयागुम की गूंज के साथ, दूर आ चुके मन के लिए कुछ समय के लिए लौटकर आराम करने की जगह। एशिया की ध्वनियों के साथ सोएं और ध्यान करें।',
+    'foot.h5.explore':'खोजें','foot.explore1':'ध्वनि सुनें','foot.explore4':'गोयो के कारण',
+    'foot.h5.company':'कंपनी','foot.company1':'परिचय','foot.company2':'क्रिएटर भर्ती','foot.company3':'ब्लॉग','foot.company4':'संपर्क करें',
+    'foot.h5.policy':'नीतियां','foot.policy1':'उपयोग की शर्तें','foot.policy2':'गोपनीयता नीति','foot.policy3':'रिफंड नीति',
+    'modal.title.default':'गोयो सदस्यता','modal.desc.default':'नीचे दी गई योजना से पूरी लाइब्रेरी खुलती है।',
+    'modal.go':'भुगतान करें','modal.close':'बाद में करेंगे'
+  }
+};
+const MSG={
+  ko:{ 'modal.desc.select':'선택하신 플랜으로 전체 소리 라이브러리와 명상 코스가 열립니다.',
+       'modal.setupnote':'데모 모드입니다 · Stripe 결제 링크를 연결하면 실제 결제로 전환됩니다.',
+       'modal.ready.title':'결제 준비 완료 ✓',
+       'modal.ready.desc':'이 버튼은 <b style="color:var(--brass-bright)">Stripe 결제창</b>으로 연결됩니다.<br>운영자가 결제 링크를 넣으면 바로 실제 결제가 진행됩니다.',
+       'modal.closebtn2':'닫기' },
+  zh:{ 'modal.desc.select':'通过您选择的方案,将开启完整音效库与冥想课程。',
+       'modal.setupnote':'当前为演示模式 · 连接Stripe支付链接后将切换为真实支付。',
+       'modal.ready.title':'支付准备完成 ✓',
+       'modal.ready.desc':'此按钮将连接到<b style="color:var(--brass-bright)">Stripe支付页面</b>。<br>运营者添加支付链接后,即可立即进行真实支付。',
+       'modal.closebtn2':'关闭' },
+  hi:{ 'modal.desc.select':'आपकी चुनी गई योजना से पूरी ध्वनि लाइब्रेरी और ध्यान कोर्स खुल जाएंगे।',
+       'modal.setupnote':'यह डेमो मोड है · Stripe भुगतान लिंक जोड़ने पर यह वास्तविक भुगतान में बदल जाएगा।',
+       'modal.ready.title':'भुगतान तैयार है ✓',
+       'modal.ready.desc':'यह बटन <b style="color:var(--brass-bright)">Stripe भुगतान पृष्ठ</b> से जुड़ा है।<br>ऑपरेटर द्वारा भुगतान लिंक जोड़ते ही वास्तविक भुगतान तुरंत शुरू हो जाएगा।',
+       'modal.closebtn2':'बंद करें' }
+};
+function t(key){ return (MSG[currentLang]&&MSG[currentLang][key]) || MSG.ko[key] || key; }
+
+const KO_CACHE={};
+document.querySelectorAll('[data-i18n]').forEach(el=>{KO_CACHE[el.getAttribute('data-i18n')]=el.innerHTML;});
+const KO_CACHE_CONTENT={};
+document.querySelectorAll('[data-i18n-content]').forEach(el=>{KO_CACHE_CONTENT[el.getAttribute('data-i18n-content')]=el.getAttribute('content');});
+const KO_CACHE_ARIA={};
+document.querySelectorAll('[data-i18n-aria]').forEach(el=>{KO_CACHE_ARIA[el.getAttribute('data-i18n-aria')]=el.getAttribute('aria-label');});
+
+let currentLang=localStorage.getItem('goyo_lang')||'ko';
+
+function applyLang(lang){
+  currentLang=lang; localStorage.setItem('goyo_lang',lang);
+  document.documentElement.lang = lang==='zh'?'zh-Hans':(lang==='hi'?'hi':'ko');
+  const dict=TRANSLATIONS[lang]||{};
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key=el.getAttribute('data-i18n');
+    el.innerHTML = lang==='ko' ? KO_CACHE[key] : (dict[key]!=null?dict[key]:KO_CACHE[key]);
+  });
+  document.querySelectorAll('[data-i18n-content]').forEach(el=>{
+    const key=el.getAttribute('data-i18n-content');
+    el.setAttribute('content', lang==='ko' ? KO_CACHE_CONTENT[key] : (dict[key]!=null?dict[key]:KO_CACHE_CONTENT[key]));
+  });
+  document.querySelectorAll('[data-i18n-aria]').forEach(el=>{
+    const key=el.getAttribute('data-i18n-aria');
+    el.setAttribute('aria-label', lang==='ko' ? KO_CACHE_ARIA[key] : (dict[key]!=null?dict[key]:KO_CACHE_ARIA[key]));
+  });
+  const sw=document.getElementById('langSwitch'); if(sw) sw.value=lang;
+  renderSounds();
+  Object.keys(active||{}).forEach(id=>{
+    const c=document.getElementById('card-'+id); if(!c) return;
+    c.classList.add('playing');
+    const play=c.querySelector('.ic-play'), pause=c.querySelector('.ic-pause');
+    if(play) play.style.display='none'; if(pause) pause.style.display='';
+  });
+}
+
 /* ══════════════ 부드러운 스크롤 & 인센스 입자 ══════════════ */
 function scrollToId(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}
 (function embers(){
@@ -739,24 +946,40 @@ const ENGINE={
 
 /* ══════════════ 사운드 카드 ══════════════ */
 const SOUNDS=[
-  {id:'bell',ko:'범종',en:'Temple Bell',desc:'산사의 새벽을 여는 놋쇠 종의 긴 울림. 마음의 먼지를 씻어냅니다.'},
-  {id:'daegeum',ko:'대금',en:'Daegeum Flute',desc:'대나무 피리의 낮은 숨결. 느리게 이어지는 정악의 드론.'},
-  {id:'gayageum',ko:'가야금',en:'Gayageum',desc:'열두 줄을 뜯는 맑은 여운. 오음계가 잔잔히 흩어집니다.'},
-  {id:'rain',ko:'산사의 비',en:'Temple Rain',desc:'기와 처마에 떨어지는 빗소리. 가장 사랑받는 수면의 소리.'},
-  {id:'wind',ko:'대나무 숲 바람',en:'Bamboo Wind',desc:'대숲을 지나는 느린 바람. 스치는 잎의 결이 마음을 비웁니다.'},
-  {id:'bowl',ko:'싱잉볼',en:'Singing Bowl',desc:'티베트 명상 볼의 유리질 배음과 맥놀이. 깊은 이완으로.'}
+  {id:'bell',ko:'범종',en:'Temple Bell',desc:'산사의 새벽을 여는 놋쇠 종의 긴 울림. 마음의 먼지를 씻어냅니다.',
+    zh:'梵钟',zhDesc:'开启山寺清晨的黄铜钟声悠长回响,涤净心中尘埃。',
+    hi:'मंदिर की घंटी',hiDesc:'पहाड़ी मंदिर की सुबह को जगाने वाली पीतल की घंटी की लंबी गूंज। यह मन की धूल को धो देती है।'},
+  {id:'daegeum',ko:'대금',en:'Daegeum Flute',desc:'대나무 피리의 낮은 숨결. 느리게 이어지는 정악의 드론.',
+    zh:'大笒',zhDesc:'竹笛低沉的气息,缓缓延续的正乐持续音。',
+    hi:'देगम बांसुरी',hiDesc:'बांस की बांसुरी की गहरी सांस। धीरे-धीरे बहता शास्त्रीय संगीत का ड्रोन।'},
+  {id:'gayageum',ko:'가야금',en:'Gayageum',desc:'열두 줄을 뜯는 맑은 여운. 오음계가 잔잔히 흩어집니다.',
+    zh:'伽倻琴',zhDesc:'拨动十二根琴弦的清澈余韵,五声音阶静静地散开。',
+    hi:'गयागुम',hiDesc:'बारह तारों को छेड़ने की स्वच्छ गूंज। पंच स्वर धीरे-धीरे बिखरते हैं।'},
+  {id:'rain',ko:'산사의 비',en:'Temple Rain',desc:'기와 처마에 떨어지는 빗소리. 가장 사랑받는 수면의 소리.',
+    zh:'山寺细雨',zhDesc:'落在瓦檐上的雨声,是最受喜爱的助眠之声。',
+    hi:'मंदिर की बारिश',hiDesc:'टाइल की छत के किनारे पर गिरती बारिश की आवाज़। सबसे पसंदीदा नींद की ध्वनि।'},
+  {id:'wind',ko:'대나무 숲 바람',en:'Bamboo Wind',desc:'대숲을 지나는 느린 바람. 스치는 잎의 결이 마음을 비웁니다.',
+    zh:'竹林清风',zhDesc:'缓缓穿过竹林的风,拂过叶片的纹理让心归于空。',
+    hi:'बांस के जंगल की हवा',hiDesc:'बांस के जंगल से गुज़रती धीमी हवा। पत्तों की सरसराहट मन को खाली कर देती है।'},
+  {id:'bowl',ko:'싱잉볼',en:'Singing Bowl',desc:'티베트 명상 볼의 유리질 배음과 맥놀이. 깊은 이완으로.',
+    zh:'颂钵',zhDesc:'西藏冥想颂钵的玻璃质泛音与拍频,带来深度放松。',
+    hi:'सिंगिंग बाउल',hiDesc:'तिब्बती ध्यान कटोरे की कांच जैसी हार्मोनिक ध्वनि और बीट। गहरी शिथिलता के लिए।'}
 ];
 const active={}; // id -> stopFn
 function renderSounds(){
   const grid=document.getElementById('soundGrid');
-  grid.innerHTML=SOUNDS.map(s=>`
+  const lang=typeof currentLang!=='undefined'?currentLang:'ko';
+  grid.innerHTML=SOUNDS.map(s=>{
+    const label = lang==='zh'?s.zh:(lang==='hi'?s.hi:s.ko);
+    const desc = lang==='zh'?s.zhDesc:(lang==='hi'?s.hiDesc:s.desc);
+    return `
     <div class="sound" id="card-${s.id}" onclick="toggleSound('${s.id}')" role="button" tabindex="0"
          onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSound('${s.id}')}">
       <div class="glow-layer"></div>
       <div class="top">
-        <div><div class="label-ko">${s.ko}</div><div class="label-en">${s.en}</div></div>
+        <div><div class="label-ko">${label}</div><div class="label-en">${s.en}</div></div>
       </div>
-      <div class="desc">${s.desc}</div>
+      <div class="desc">${desc}</div>
       <div class="ctrl">
         <div class="play-btn">
           <svg class="ic-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -764,7 +987,7 @@ function renderSounds(){
         </div>
         <div class="wave">${'<i></i>'.repeat(14)}</div>
       </div>
-    </div>`).join('');
+    </div>`;}).join('');
 }
 renderSounds();
 
@@ -798,9 +1021,9 @@ bellWrap.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preve
 
 /* ══════════════ 구독 결제 (Stripe Payment Link) ══════════════ */
 const PLANS={
-  monthly:{name:'월간 멤버십',price:'$7.99 / 월'},
-  annual:{name:'연간 멤버십 · 7일 무료',price:'$59.99 / 년'},
-  lifetime:{name:'평생 이용권',price:'$199 · 1회'}
+  ko:{monthly:{name:'월간 멤버십',price:'$7.99 / 월'},annual:{name:'연간 멤버십 · 7일 무료',price:'$59.99 / 년'},lifetime:{name:'평생 이용권',price:'$199 · 1회'}},
+  zh:{monthly:{name:'月度会员',price:'$7.99 / 月'},annual:{name:'年度会员 · 7天免费',price:'$59.99 / 年'},lifetime:{name:'终身使用权',price:'$199 · 一次性'}},
+  hi:{monthly:{name:'मासिक सदस्यता',price:'$7.99 / माह'},annual:{name:'वार्षिक सदस्यता · 7 दिन मुफ़्त',price:'$59.99 / वर्ष'},lifetime:{name:'आजीवन पास',price:'$199 · एकमुश्त'}}
 };
 let currentPlan=null;
 function startSubscribe(plan){
@@ -809,26 +1032,29 @@ function startSubscribe(plan){
   const isLive=link && !link.startsWith('PASTE_');
   if(isLive){ window.location.href=link; return; } // 실제 Stripe 결제창으로
   // 데모 모달
-  document.getElementById('mPlanName').textContent=PLANS[plan].name;
-  document.getElementById('mPlanPrice').textContent=PLANS[plan].price;
-  document.getElementById('mTitle').textContent='고요 멤버십';
-  document.getElementById('mDesc').textContent='선택하신 플랜으로 전체 소리 라이브러리와 명상 코스가 열립니다.';
-  document.getElementById('mSetupNote').textContent='데모 모드입니다 · Stripe 결제 링크를 연결하면 실제 결제로 전환됩니다.';
+  const p=(PLANS[currentLang]||PLANS.ko)[plan];
+  document.getElementById('mPlanName').textContent=p.name;
+  document.getElementById('mPlanPrice').textContent=p.price;
+  document.getElementById('mTitle').textContent=(TRANSLATIONS[currentLang]&&TRANSLATIONS[currentLang]['modal.title.default'])||KO_CACHE['modal.title.default'];
+  document.getElementById('mDesc').textContent=t('modal.desc.select');
+  document.getElementById('mSetupNote').textContent=t('modal.setupnote');
   document.getElementById('modal').classList.add('show');
 }
 function proceedCheckout(){
   const link=(window.GOYO_STRIPE||{})[currentPlan]||'';
   if(link && !link.startsWith('PASTE_')){ window.location.href=link; return; }
   const m=document.querySelector('.modal');
-  m.querySelector('h3').textContent='결제 준비 완료 ✓';
-  m.querySelector('#mDesc').innerHTML='이 버튼은 <b style="color:var(--brass-bright)">Stripe 결제창</b>으로 연결됩니다.<br>운영자가 결제 링크를 넣으면 바로 실제 결제가 진행됩니다.';
-  m.querySelector('.m-actions').innerHTML='<button class="close" style="font-size:14px;color:var(--paper)" onclick="closeModal()">닫기</button>';
+  m.querySelector('h3').textContent=t('modal.ready.title');
+  m.querySelector('#mDesc').innerHTML=t('modal.ready.desc');
+  m.querySelector('.m-actions').innerHTML=`<button class="close" style="font-size:14px;color:var(--paper)" onclick="closeModal()">${t('modal.closebtn2')}</button>`;
 }
 function closeModal(){document.getElementById('modal').classList.remove('show');
   // 모달 액션 원복
   setTimeout(()=>{const a=document.querySelector('.modal .m-actions');
-    if(a) a.innerHTML='<button class="btn btn-primary" onclick="proceedCheckout()">결제 진행</button><button class="close" onclick="closeModal()">다음에 할게요</button>';},300);}
+    if(a) a.innerHTML=`<button class="btn btn-primary" onclick="proceedCheckout()">${(TRANSLATIONS[currentLang]&&TRANSLATIONS[currentLang]['modal.go'])||KO_CACHE['modal.go']}</button><button class="close" onclick="closeModal()">${(TRANSLATIONS[currentLang]&&TRANSLATIONS[currentLang]['modal.close'])||KO_CACHE['modal.close']}</button>`;},300);}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
+applyLang(currentLang);
 </script>
 </body>
 </html>
